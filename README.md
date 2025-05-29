@@ -775,6 +775,7 @@ end
 ```
 
 ### Create Dispute API
+#### NOTE: This API is intended to be called only by PSPs (Payment Service Providers).
 
 ```ruby
 creation_timestamp = Time.now.to_i
@@ -807,6 +808,19 @@ if response.code.to_i == 200
     puts response.body
 else
     puts "Error: Create Dispute API"
+    puts "Status: #{response.code}"
+    puts response.body
+end
+```
+
+### Get Dispute API
+```ruby
+response = client.get_dispute('S03-XXXXXX-XXXXXX-XXXXXX')
+if response.code.to_i == 200
+    puts "Get Dispute API Response:"
+    puts response.body
+else
+    puts "Error: Get Dispute API"
     puts "Status: #{response.code}"
     puts response.body
 end

@@ -1,6 +1,6 @@
 require 'rspec'
-require_relative '../lib/amazon_pay/client'
-require_relative '../lib/amazon_pay/client_helper'
+require_relative '../lib/amazon-pay-api-sdk-ruby/client'
+require_relative '../lib/amazon-pay-api-sdk-ruby/client_helper'
 require_relative 'shared_config'
 
 RSpec.describe AmazonPayClient do

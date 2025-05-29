@@ -1,6 +1,6 @@
 require 'rspec'
 require 'net/http'
-require_relative '../lib/amazon_pay/client_helper'
+require_relative '../lib/amazon-pay-api-sdk-ruby/client_helper'
 require_relative 'shared_config'
 
 RSpec.describe ClientHelper do

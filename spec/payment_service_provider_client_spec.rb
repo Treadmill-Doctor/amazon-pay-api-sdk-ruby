@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../lib/amazon_pay/payment_service_provider_client'
+require_relative '../lib/amazon-pay-api-sdk-ruby/client'
 require_relative 'shared_config'
 
 RSpec.describe PaymentServiceProviderClient do
@@ -22,6 +22,19 @@ RSpec.describe PaymentServiceProviderClient do
             ).and_return(response)
 
             result = client.create_dispute(payload, headers: headers)
+            expect(result).to eq(response)
+        end
+    end
+
+    describe '#get_dispute' do
+        it 'calls api_call with the correct parameters' do
+            expect(client).to receive(:api_call).with(
+                "#{Constants::DISPUTE_URLS}/#{dispute_id}",
+                Constants::GET,
+                headers: headers
+            ).and_return(response)
+
+            result = client.get_dispute(dispute_id, headers: headers)
             expect(result).to eq(response)
         end
     end

@@ -2,7 +2,7 @@ require 'net/http'
 
 module Constants
     SDK_TYPE = "amazon-pay-api-sdk-ruby".freeze
-    SDK_VERSION = "2.0.0".freeze
+    SDK_VERSION = "2.1.0".freeze
     API_VERSION = "v2".freeze
     API_ENDPOINTS = {
       'na' => 'pay-api.amazon.com',
@@ -38,7 +38,7 @@ module Constants
     DELETE = 'DELETE'.freeze
     MAX_RETRIES = 3.freeze
     BACKOFF_TIMES = [1, 2, 4].freeze # Define backoff times for retries
-    RETRYABLE_ERROR_CODES = [408, 429, 500, 502, 503, 504].freeze
+    RETRYABLE_ERROR_CODES = [408, 425, 429, 500, 502, 503, 504].freeze
     HTTP_OK = '200'
     HTTP_SERVER_ERROR = '500'
     BUYERS_URL = 'buyers'.freeze
@@ -92,6 +92,10 @@ module Constants
       CANCELLATION_POLICY: "CancellationPolicy",
       CUSTOMER_SIGNATURE: "CustomerSignature",
       TRACKING_NUMBER: "TrackingNumber",
+      CARRIER_NAME: "CarrierName",
+      DEVICE_ID: "DeviceId",
+      DEVICE_NAME: "DeviceName",
+      DOWNLOAD_DATE_TIME: "DownloadDateTime",
       OTHER: "Other"
     }.freeze
 end
