@@ -82,4 +82,37 @@ RSpec.describe PaymentServiceProviderClient do
             expect(result).to eq(response)
         end
     end
+
+    describe '#create_store' do
+        let(:merchant_account_id) { 'merchant_account_id' }
+
+        it 'calls api_call with the correct parameters' do
+            expect(client).to receive(:api_call).with(
+                "#{Constants::MERCHANT_ACCOUNTS_BASE_URL}/#{merchant_account_id}/#{Constants::STORES_URL}",
+                Constants::POST,
+                payload: payload,
+                headers: headers
+            ).and_return(response)
+
+            result = client.create_store(merchant_account_id, payload, headers: headers)
+            expect(result).to eq(response)
+        end
+    end
+
+    describe '#update_store' do
+        let(:merchant_account_id) { 'merchant_account_id' }
+        let(:store_id) { 'store_id' }
+
+        it 'calls api_call with the correct parameters' do
+            expect(client).to receive(:api_call).with(
+                "#{Constants::MERCHANT_ACCOUNTS_BASE_URL}/#{merchant_account_id}/#{Constants::STORES_URL}/#{store_id}",
+                Constants::PATCH,
+                payload: payload,
+                headers: headers
+            ).and_return(response)
+
+            result = client.update_store(merchant_account_id, store_id, payload, headers: headers)
+            expect(result).to eq(response)
+        end
+    end
 end

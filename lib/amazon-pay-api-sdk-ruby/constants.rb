@@ -2,7 +2,7 @@ require 'net/http'
 
 module Constants
     SDK_TYPE = "amazon-pay-api-sdk-ruby".freeze
-    SDK_VERSION = "2.1.0".freeze
+    SDK_VERSION = "2.2.0".freeze
     API_VERSION = "v2".freeze
     API_ENDPOINTS = {
       'na' => 'pay-api.amazon.com',
@@ -52,6 +52,7 @@ module Constants
     DISBURSEMENTS = 'disbursements'.freeze
     DISPUTE_URLS = 'disputes'.freeze
     FILES_URLS = 'files'.freeze
+    STORES_URL = 'stores'.freeze
     DISPUTE_FILING_REASON = {
       PRODUCT_NOT_RECEIVED: "ProductNotReceived",
       PRODUCT_UNACCEPTABLE: "ProductUnacceptable",

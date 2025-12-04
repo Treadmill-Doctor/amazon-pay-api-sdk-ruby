@@ -50,4 +50,29 @@ module PaymentServiceProviderClient
     def upload_file(payload, headers: {});    
         api_call(Constants::FILES_URLS, Constants::POST, payload: payload, headers: headers)
     end
-end  
+
+    # API to create store.
+    # The createStore operation is used to create a new store for a merchant account.
+    # This allows merchants to configure store-specific settings like allowed domains, redirect URLs,
+    # store name, privacy policy URL, merchant logo URL, and store status.
+    # @param {String} merchant_account_id - The unique ID of the merchant account to create the store for.
+    # @param {Object} payload - The payload containing store configuration details.
+    # @param {Object} headers - Optional headers for the request, such as authorization tokens or custom headers.
+    # @return [HTTPResponse] The response from the API call, which includes details of the created store.
+    def create_store(merchant_account_id, payload, headers: {})
+        api_call("#{Constants::MERCHANT_ACCOUNTS_BASE_URL}/#{merchant_account_id}/#{Constants::STORES_URL}", Constants::POST, payload: payload, headers: headers)
+    end
+
+    # API to update store.
+    # The updateStore operation is used to update an existing store's configuration.
+    # This allows merchants to modify store-specific settings like allowed domains, redirect URLs,
+    # store name, privacy policy URL, merchant logo URL, and store status.
+    # @param {String} merchant_account_id - The unique ID of the merchant account that owns the store.
+    # @param {String} store_id - The unique ID of the store to update.
+    # @param {Object} payload - The payload containing updated store configuration details.
+    # @param {Object} headers - Optional headers for the request, such as authorization tokens or custom headers.
+    # @return [HTTPResponse] The response from the API call, which includes details of the updated store.
+    def update_store(merchant_account_id, store_id, payload, headers: {})
+        api_call("#{Constants::MERCHANT_ACCOUNTS_BASE_URL}/#{merchant_account_id}/#{Constants::STORES_URL}/#{store_id}", Constants::PATCH, payload: payload, headers: headers)
+    end
+end

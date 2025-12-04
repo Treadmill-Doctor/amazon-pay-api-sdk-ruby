@@ -1,3 +1,7 @@
+#### Version 2.2.0 - December 2025
+- Introducing Create Store & Update Store APIs for managing stores within merchant accounts.
+- Note: These APIs are restricted to allowlisted payment service providers only.
+
 #### Version 2.1.0 - May 2025
 - Introducing GetDispute API which is used to retrieve details of a chargeback dispute associated with a specific order
 - Added error code `425` to API retry logic

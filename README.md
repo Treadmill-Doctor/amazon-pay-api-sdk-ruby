@@ -908,3 +908,52 @@ else
     puts response.body
 end
 ```
+
+### Create Store
+
+```ruby
+create_store_payload = {
+    "allowedOriginDomains": ["https://example.com", "https://www.example.com"],
+    "allowedRedirectURLs": ["https://example.com/return", "https://example.com/cancel"],
+    "storeName": "My Store",
+    "privacyPolicyUrl": "https://example.com/privacy",
+    "merchantLogoUrl": "https://example.com/logo.png"
+}
+
+merchant_account_id = "MERCHANT_ACCOUNT_ID"
+
+response = client.create_store(merchant_account_id, create_store_payload, headers: {})
+if response.code.to_i == 201
+    puts "Create Store API Response:"
+    puts response.body
+else
+    puts "Error: Create Store API"
+    puts "Status: #{response.code}"
+    puts response.body
+end
+```
+
+### Update Store
+
+```ruby
+update_store_payload = {
+    "allowedOriginDomains": ["https://example.com", "https://www.example.com", "https://shop.example.com"],
+    "allowedRedirectURLs": ["https://example.com/return", "https://example.com/cancel"],
+    "storeName": "Updated Store Name",
+    "privacyPolicyUrl": "https://example.com/privacy-updated",
+    "merchantLogoUrl": "https://example.com/new-logo.png"
+}
+
+merchant_account_id = "MERCHANT_ACCOUNT_ID"
+store_id = "STORE_ID"
+
+response = client.update_store(merchant_account_id, store_id, update_store_payload, headers: {})
+if response.code.to_i == 200
+    puts "Update Store API Response:"
+    puts response.body
+else
+    puts "Error: Update Store API"
+    puts "Status: #{response.code}"
+    puts response.body
+end
+```
